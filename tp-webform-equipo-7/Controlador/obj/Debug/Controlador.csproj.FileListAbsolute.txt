@@ -1,0 +1,6 @@
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\bin\Debug\Controlador.dll
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\bin\Debug\Controlador.pdb
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\obj\Debug\Controlador.csproj.AssemblyReference.cache
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\obj\Debug\Controlador.csproj.CoreCompileInputs.cache
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\obj\Debug\Controlador.dll
+C:\Users\juamfr\Desktop\Repo Github\TP1WinForm\Controlador\obj\Debug\Controlador.pdb
