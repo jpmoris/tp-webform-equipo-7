@@ -8,25 +8,37 @@ namespace Modelo
 {
     public class Articulo
     {
-        private int codigo;
+        private int id;
+        private string codigo;
         private string nombre;
         private string descripcion;
         Marca marca;
         Categoria categoria;
-        List<string> imagenes;
-        private float precio;
+        List<string> imagenes = new List<string>();
+        private decimal precio;
 
-        public Articulo(int codigo, string nombre, string descripcion, Marca marca, Categoria categoria, List<string> imagenes, float precio)
+        public Articulo(int id,string codigo, string nombre, string descripcion, Marca marca, Categoria categoria, List<string> imagenes, decimal precio, Imagen imagen)
         {
+            this.id = id;
             this.codigo = codigo;
             this.nombre = nombre;
             this.descripcion = descripcion;
             this.marca = marca;
             this.categoria = categoria;
-            this.imagenes = imagenes;
+            this.imagenes.AddRange(imagenes);
             this.precio = precio;
         }
-        public Articulo() {}
+        public Articulo() { }
+        public string Codigo
+        {
+            get { return codigo; }
+            set { codigo = value; }
+        }
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Nombre
         {
             get { return nombre; }
@@ -37,7 +49,7 @@ namespace Modelo
             get { return descripcion; }
             set { descripcion = value; }
         }
-        public float Precio
+        public decimal Precio
         {
             get { return precio; }
             set { precio = value; }
@@ -51,6 +63,11 @@ namespace Modelo
         {
             get { return marca; }
             set { marca = value; }
+        }
+        public List<string> Imagenes
+        {
+            get { return imagenes; }
+            set { imagenes.AddRange(value) ; }
         }
     }
 

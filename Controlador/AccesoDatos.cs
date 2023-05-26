@@ -20,7 +20,7 @@ namespace Controlador
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("data source = .\\SQLEXPRESS; initial catalog = CATALOGO_DB;integrated security = sspi;");
+            conexion = new SqlConnection("server=localhost; initial catalog=CATALOGO_P3_DB;integrated security = sspi;");
             comando = new SqlCommand();
         }
 

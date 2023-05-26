@@ -18,11 +18,20 @@ namespace Modelo
             this.nombre = nombre;
         }
         public Marca() {}
-        public int Codigo { get; set; }
+        public int Codigo 
+        {
+            get { return codigo; }
+            set { codigo = value;} 
+        }
         public string Nombre
         {
             get { return nombre; }
             set { nombre = value; }
+        }
+
+        public override string ToString()
+        {
+            return nombre;
         }
     }
 }

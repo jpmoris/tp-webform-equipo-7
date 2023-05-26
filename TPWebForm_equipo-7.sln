@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tp-webform-equipo-7", "tp-webform-equipo-7\tp-webform-equipo-7.csproj", "{0EA0310B-0353-4BCA-97E5-03C08D4B59CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlador", "Controlador\Controlador.csproj", "{97071D52-05B3-4FEC-9D69-9A6E11579143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modelo", "Modelo\Modelo.csproj", "{2A7D92E0-D457-4844-8AD7-5F99D41708EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0EA0310B-0353-4BCA-97E5-03C08D4B59CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EA0310B-0353-4BCA-97E5-03C08D4B59CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EA0310B-0353-4BCA-97E5-03C08D4B59CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97071D52-05B3-4FEC-9D69-9A6E11579143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97071D52-05B3-4FEC-9D69-9A6E11579143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97071D52-05B3-4FEC-9D69-9A6E11579143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97071D52-05B3-4FEC-9D69-9A6E11579143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A7D92E0-D457-4844-8AD7-5F99D41708EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A7D92E0-D457-4844-8AD7-5F99D41708EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A7D92E0-D457-4844-8AD7-5F99D41708EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A7D92E0-D457-4844-8AD7-5F99D41708EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

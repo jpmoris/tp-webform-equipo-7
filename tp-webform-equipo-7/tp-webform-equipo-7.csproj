@@ -67,16 +67,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Controlador\bin\Debug\Controlador.dll" />
-    <Content Include="Controlador\bin\Debug\Controlador.pdb" />
-    <Content Include="Controlador\obj\Debug\Controlador.csproj.FileListAbsolute.txt" />
-    <Content Include="Controlador\obj\Debug\Controlador.dll" />
-    <Content Include="Controlador\obj\Debug\Controlador.pdb" />
-    <Content Include="Modelo\bin\Debug\Modelo.dll" />
-    <Content Include="Modelo\bin\Debug\Modelo.pdb" />
-    <Content Include="Modelo\obj\Debug\Modelo.csproj.FileListAbsolute.txt" />
-    <Content Include="Modelo\obj\Debug\Modelo.dll" />
-    <Content Include="Modelo\obj\Debug\Modelo.pdb" />
     <Content Include="assets\css\style.css" />
     <Content Include="Carrito.aspx" />
     <Content Include="Catalogo.aspx" />
@@ -93,11 +83,6 @@
     <Compile Include="AppMaster.Master.designer.cs">
       <DependentUpon>AppMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Controlador\AccesoDatos.cs" />
-    <Compile Include="Modelo\Articulo.cs" />
-    <Compile Include="Modelo\Categoria.cs" />
-    <Compile Include="Modelo\Imagen.cs" />
-    <Compile Include="Modelo\Marca.cs" />
     <Compile Include="Carrito.aspx.cs">
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -133,14 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppMaster.Master" />
-    <Content Include="Controlador\Controlador.csproj" />
-    <Content Include="Controlador\obj\Debug\Controlador.csproj.AssemblyReference.cache" />
-    <Content Include="Controlador\obj\Debug\Controlador.csproj.CoreCompileInputs.cache" />
-    <Content Include="Controlador\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="Modelo\Modelo.csproj" />
-    <Content Include="Modelo\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="Modelo\obj\Debug\Modelo.csproj.AssemblyReference.cache" />
-    <Content Include="Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -153,9 +130,17 @@
     <Folder Include="App_Data\" />
     <Folder Include="assets\img\" />
     <Folder Include="assets\js\" />
-    <Folder Include="Controlador\obj\Debug\TempPE\" />
-    <Folder Include="Modelo\obj\Debug\TempPE\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controlador\Controlador.csproj">
+      <Project>{97071d52-05b3-4fec-9d69-9a6e11579143}</Project>
+      <Name>Controlador</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{2a7d92e0-d457-4844-8ad7-5f99d41708ea}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
