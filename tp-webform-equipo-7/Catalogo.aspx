@@ -51,24 +51,25 @@
 
         <h2>Productos</h2>
         <div class="row">
-          <div class="col-md-4">
-          
-                <!-- producto -->
-                <div class="card">
-                  <a runat="server" href="Producto.aspx"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png" class="card-img-top" alt="Imagen destacada"></a>
-
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre 1</h5>
-                    <p class="card-text fs-5 fw-bold">$100 
-                        <small class="text-decoration-line-through">$120</small>
-                        <span class="badge bg-danger m-2 p-lg-2">Oferta</span>
-                    </p>
-                    <a class="btn btn-primary" runat="server" href="Producto.aspx" role="button">Ver producto</a>
-                  </div>
-                </div>
-                <!-- fin producto-->
-   
-          </div>
+                 <asp:Repeater runat="server" id="cardRepeater">
+                     <ItemTemplate>
+                        <div class="col-md-4">
+                            <!-- producto -->
+                            <div class="card">
+                              <div class="card-body">
+                                <a runat="server" href="Producto.aspx"><img src="<%#Eval("Imagenes[0]") %>" class="card-img-top" alt="Imagen destacada"></a>
+                                <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                                <p class="card-text fs-5 fw-bold"><%#Eval("Precio")%> 
+                                    <small class="text-decoration-line-through">$120</small>
+                                    <span class="badge bg-danger m-2 p-lg-2">Oferta</span>
+                                </p>
+                                <a class="btn btn-primary" runat="server" href="Producto.aspx" role="button">Ver producto</a>
+                              </div>
+                            </div>
+                            <!-- fin producto-->
+                        </div>
+                     </ItemTemplate>
+                 </asp:Repeater>
         </div>
 
         <nav aria-label="Navegación de página">
