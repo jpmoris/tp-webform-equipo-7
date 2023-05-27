@@ -25,23 +25,11 @@ namespace tp_webform_equipo_7
                 {
                     List<Imagen> imagenes = negocioImg.listarPorIdArticulo(articulo.Id);
                     List<string> imagenesUrl = new List<string>();
-                    foreach (Imagen imagen in imagenes)
-                    {/*
-                        try   //Si la imagen no existe, se agrega una imagen de placeholder
-                        {
-                            WebClient cliente = new WebClient();
-                            cliente.OpenRead(imagen.url);
-                        }
-                        catch (WebException)
-                        {
-                            imagenesUrl.Add(placeholderImg);
-                        }*/
-                            imagenesUrl.Add(imagen.url);
-                    }
-                    if((imagenesUrl.Count == 0)) //si no hay imagenes, se agrega una imagen de placeholder
-                    {
-                        imagenesUrl.Add(placeholderImg);
-                    }
+                    //si hay imagenes guardadas se agrega la primera, sino se agrega un placeholder
+
+                    if (imagenes.Count == 0) imagenesUrl.Add(placeholderImg);
+                    else imagenesUrl.Add(imagenes[0].url);
+                    
                     articulo.Imagenes = imagenesUrl;   
                     
                 }
