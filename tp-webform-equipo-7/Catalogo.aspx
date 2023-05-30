@@ -16,11 +16,8 @@
         <!-- filtro categorias -->
         <div class="mb-3">
           <label for="categoria" class="form-label">Categoría</label>
-          <asp:DropDownList runat="server" class="form-select" id="categoria" >
-            <asp:ListItem Selected="True">Todas las categorías</asp:ListItem>
-            <asp:ListItem value="1">Categoría 1</asp:ListItem>
-            <asp:ListItem value="2">Categoría 2</asp:ListItem>
-            <asp:ListItem value="3">Categoría 3</asp:ListItem>
+          <asp:DropDownList runat="server" class="form-select" id="ddlCategorias" AutoPostBack="true" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged">   
+              
           </asp:DropDownList>
         </div>
 
@@ -28,11 +25,8 @@
         <div class="mb-3">
           <label for="marcas" class="form-label">Marca</label>
 
-          <asp:DropDownList runat="server" class="form-select" id="marcas">
-            <asp:ListItem Selected="True">Todas las marcas</asp:ListItem>
-            <asp:ListItem value="1">Marca 1</asp:ListItem>
-            <asp:ListItem value="2">Marca 2</asp:ListItem>
-            <asp:ListItem value="3">Marca 3</asp:ListItem>
+          <asp:DropDownList runat="server" class="form-select" id="ddlMarcas">
+              
           </asp:DropDownList>
         </div>
 
