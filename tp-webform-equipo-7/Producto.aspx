@@ -58,8 +58,8 @@
              
             </p>
         <div class="input-group mb-3" style="max-width: 200px;">
-          <input type="number" class="form-control" placeholder="Cantidad" aria-label="Cantidad" aria-describedby="button-addon2">
-          <button class="btn btn-primary" type="button" id="button-addon2">Agregar al carrito</button>
+            <asp:TextBox  type="number" class="form-control" ID="tbxCantidad" runat="server">0</asp:TextBox>
+          <asp:Button id="btnAgregar" Text="Agregar al carrito" CssClass="btn btn-success" runat="server" OnClick="btnAgregar_Click"/>
         </div>
       </div>
 
