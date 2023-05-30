@@ -20,7 +20,7 @@ namespace tp_webform_equipo_7
 
             if (!IsPostBack)
             {
-                List<Articulo> listaArticulos = new List<Articulo>;
+                List<Articulo> listaArticulos = new List<Articulo>();
                 List<Marca> listaMarcas = new List<Marca>();
                 List<Categoria> listaCategorias = new List<Categoria>();
                 ArticuloNegocio negocioArt = new ArticuloNegocio();
