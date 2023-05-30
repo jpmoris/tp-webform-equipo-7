@@ -52,7 +52,7 @@
                                         <p class="card-text fs-5 fw-bold"><%#Eval("Precio")%> 
                                 <!--    <span class="badge bg-danger m-2 p-lg-2">Oferta</span>      -->
                                         </p>
-                                        <a class="btn btn-primary" runat="server" href="Producto.aspx" role="button">Ver producto</a>
+                                        <a class="btn btn-primary" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
                                     </a>
                                   </div>
                                 </div>
