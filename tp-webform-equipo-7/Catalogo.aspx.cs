@@ -13,9 +13,11 @@ namespace tp_webform_equipo_7
     public partial class Catalogo : System.Web.UI.Page
     {
         private string placeholderImg = "https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg";
-        public List<Articulo> listaArticulos { get; set; }
+        //public List<Articulo> listaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Articulo> listaArticulos = new List<Articulo>();
+
             if (!IsPostBack)
             {
                 ArticuloNegocio negocioArt = new ArticuloNegocio();
@@ -33,8 +35,12 @@ namespace tp_webform_equipo_7
                     articulo.Imagenes = imagenesUrl;   
                     
                 }
-                cardRepeater.DataSource = listaArticulos;
+                Session.Add("listaArticulos", listaArticulos);
+                cardRepeater.DataSource = Session["listaArticulos"];
                 cardRepeater.DataBind();
+                
+
+                
             }
         }
     }
