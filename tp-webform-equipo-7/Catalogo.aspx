@@ -4,6 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-3">
     <div class="row">
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         
         <!-- sidebar -->
       <div class="col-md-3">
@@ -24,10 +25,13 @@
         <!-- filtro marcas -->
         <div class="mb-3">
           <label for="marcas" class="form-label">Marca</label>
-
-          <asp:DropDownList runat="server" class="form-select" id="ddlMarcas">
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                  <asp:DropDownList runat="server" class="form-select" id="ddlMarcas" AutoPostBack="true" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged">
               
-          </asp:DropDownList>
+                  </asp:DropDownList>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
 
       </div>
@@ -36,7 +40,6 @@
       <div class="col-md-9">
 
         <h2>Productos</h2>
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                 <div class="row">

@@ -14,7 +14,7 @@ namespace tp_webform_equipo_7
     {
         private string placeholderImg = "https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg";
 
-      
+        
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -58,7 +58,7 @@ namespace tp_webform_equipo_7
                 ddlCategorias.DataBind();
 
                 Session.Add("listaMarcas", listaMarcas);
-                ddlMarcas.DataSource = Session["lsitaMarcacs"];
+                ddlMarcas.DataSource = Session["listaMarcas"];
                 ddlMarcas.DataTextField = "Nombre";
                 ddlMarcas.DataValueField = "Codigo";
                 ddlMarcas.DataBind();
@@ -74,19 +74,44 @@ namespace tp_webform_equipo_7
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             int codigo = int.Parse(ddlCategorias.SelectedItem.Value);
+            List<Articulo> listaFiltrada = ((List<Articulo>)Session["listaArticulos"]).FindAll(a => a.Categoria.Codigo == codigo);
+            Session.Add("listaFiltrada", listaFiltrada);
             if (codigo == 0)
             {
                 cardRepeater.DataSource = Session["listaArticulos"];
                 cardRepeater.DataBind();
+                ddlMarcas.DataSource = Session["listaMarcas"];
+                ddlMarcas.DataBind();
             }
             else
             {
-                cardRepeater.DataSource = ((List<Articulo>)Session["listaArticulos"]).FindAll(a => a.Categoria.Codigo == codigo);
+                cardRepeater.DataSource = listaFiltrada;
                 cardRepeater.DataBind();
+                //actualiza filtro de marcas
+                ddlMarcas.DataSource = ((List<Marca>)Session["listaMarcas"]).FindAll(m => listaFiltrada.Any(a => a.Marca.Codigo == m.Codigo)||m.Codigo==0);
+                ddlMarcas.DataBind();
             }
-            //updateFiltroMarcas()
         }
 
+        protected void ddlMarcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int codigo = int.Parse(ddlMarcas.SelectedItem.Value);
+            List<Articulo> listaFiltradaMarcas = new List<Articulo>();
+            if (int.Parse(ddlCategorias.SelectedItem.Value) == 0) listaFiltradaMarcas = (List<Articulo>)Session["listaArticulos"];
+            else listaFiltradaMarcas = (List<Articulo>)Session["listaFiltrada"];
+            if(codigo == 0)
+            {
+                cardRepeater.DataSource = listaFiltradaMarcas;
+                cardRepeater.DataBind();
+            }
+            else
+            {
+                cardRepeater.DataSource = listaFiltradaMarcas.FindAll(a => a.Marca.Codigo == codigo);
+                cardRepeater.DataBind();
+            }
+
+        }
     }
 }
