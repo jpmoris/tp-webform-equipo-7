@@ -14,9 +14,11 @@ namespace tp_webform_equipo_7
     {
         private string placeholderImg = "https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg";
 
+        private string ordenarPor = "0";
         
         protected void Page_Load(object sender, EventArgs e)
         {
+
 
             if (!IsPostBack)
             {
@@ -113,5 +115,27 @@ namespace tp_webform_equipo_7
             }
 
         }
+
+        protected void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            if(txtBusqueda.Text == "")
+            {
+                cardRepeater.DataSource = Session["listaArticulos"];
+                cardRepeater.DataBind();
+                return;
+            }
+
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            listaFiltrada = ((List<Articulo>)Session["listaArticulos"]).FindAll(a =>
+                a.Nombre.ToLower().Contains(txtBusqueda.Text.ToLower()) ||
+                a.Marca.Nombre.ToLower().Contains(txtBusqueda.Text.ToLower()) ||
+                a.Categoria.Nombre.ToLower().Contains(txtBusqueda.Text.ToLower())
+                );
+            Session.Add("listaFiltrada", listaFiltrada);
+            cardRepeater.DataSource = listaFiltrada;
+            cardRepeater.DataBind();
+        }
+
+        
     }
 }

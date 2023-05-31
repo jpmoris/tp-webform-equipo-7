@@ -10,9 +10,12 @@
       <div class="col-md-3">
 
         <h4>Filtros</h4>
+
+        <!-- orden -->
         <div class="mb-3">
-          <label for="rangoPrecios" class="form-label">Rango de precios</label>
-          <input type="range" class="form-range" id="rangoPrecios" min="0" max="100" step="10" >
+          <label for="order" class="form-label">Ordenar por</label>
+          <asp:DropDownList runat="server" class="form-select" id="order" AutoPostBack="true">   
+          </asp:DropDownList>
         </div>
         <!-- filtro categorias -->
         <div class="mb-3">
@@ -37,8 +40,16 @@
       </div>
         <!-- fin sidebar -->
 
+        <!-- buscador-->
       <div class="col-md-9">
+        <div class="row">
+            <div class="input-group mb-3">
+              <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" placeholder="Buscar producto"></asp:textBox>
+              <asp:button runat="server" class="btn btn-outline-secondary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
+                </div>
+        </div>
 
+          <!-- catalogo-->
         <h2>Productos</h2>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
@@ -57,7 +68,7 @@
                                         </p>
                                         <a class="btn btn-primary" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
                                     </a>
-                                  </div>
+                                  &nbsp;</div>
                                 </div>
                                 <!-- fin producto-->
                             </div>

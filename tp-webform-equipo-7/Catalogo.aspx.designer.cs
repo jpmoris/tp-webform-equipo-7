@@ -24,6 +24,15 @@ namespace tp_webform_equipo_7
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// order control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList order;
+
+        /// <summary>
         /// ddlCategorias control.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,24 @@ namespace tp_webform_equipo_7
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMarcas;
+
+        /// <summary>
+        /// txtBusqueda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBusqueda;
+
+        /// <summary>
+        /// btnBusqueda control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBusqueda;
 
         /// <summary>
         /// cardRepeater control.
