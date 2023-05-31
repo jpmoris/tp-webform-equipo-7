@@ -134,8 +134,8 @@ namespace tp_webform_equipo_7
             Session.Add("listaFiltrada", listaFiltrada);
             cardRepeater.DataSource = listaFiltrada;
             cardRepeater.DataBind();
-        }
 
+        }
         
     }
 }
