@@ -11,12 +11,13 @@
 
         <h4>Filtros</h4>
 
-        <!-- orden -->
+        <!-- orden 
         <div class="mb-3">
           <label for="order" class="form-label">Ordenar por</label>
           <asp:DropDownList runat="server" class="form-select" id="order" AutoPostBack="true">   
           </asp:DropDownList>
         </div>
+            -->
         <!-- filtro categorias -->
         <div class="mb-3">
           <label for="categoria" class="form-label">Categoría</label>
@@ -68,7 +69,7 @@
                                         </p>
                                         <a class="btn btn-primary" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
                                     </a>
-                                  &nbsp;</div>
+                                  &nbsp;&nbsp;</div>
                                 </div>
                                 <!-- fin producto-->
                             </div>
