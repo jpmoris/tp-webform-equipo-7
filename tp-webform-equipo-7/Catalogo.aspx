@@ -9,8 +9,11 @@
         <!-- sidebar -->
       <div class="col-md-3">
 
-        <h4>Filtros</h4>
+          <div class="d-flex justify-content-between">
 
+          <h4>Filtros</h4>
+          <asp:Button ID="Button1" OnClick="btn_Restablecer" cssclass="btn btn-outline-primary" text="Restablecer" runat="server" />
+          </div>
         <!-- orden 
         <div class="mb-3">
           <label for="order" class="form-label">Ordenar por</label>

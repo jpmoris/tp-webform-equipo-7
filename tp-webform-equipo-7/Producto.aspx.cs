@@ -23,17 +23,19 @@ namespace tp_webform_equipo_7
             {
                 idSeleccionado = Convert.ToInt32(Request.QueryString["id"]);
                 aux = negocioArt.buscarArticulo(idSeleccionado);
-                if(aux != null)
+                if (aux != null)
                 {
                     lblProductoMarca.Text = aux.Marca.Nombre;
-                   lblNombreProducto.Text = aux.Nombre;
-                   lblProductoTitulo.Text = aux.Nombre;
-                   lblProductoDescripcion.Text = aux.Descripcion;
-                   hrefCategoria.Text = aux.Categoria.Nombre;
-                   lblProductoPrecio.Text = "$" + aux.Precio.ToString();
+                    lblNombreProducto.Text = aux.Nombre;
+                    lblProductoTitulo.Text = aux.Nombre;
+                    lblProductoDescripcion.Text = aux.Descripcion;
+                    hrefCategoria.Text = aux.Categoria.Nombre;
+                    lblProductoPrecio.Text = "$" + aux.Precio.ToString();
                 }
-            } else
+            }
+            else
             {
+
                 // mostrar buscador y botón
                 // comprobar si existe el ID.
             }
@@ -43,6 +45,11 @@ namespace tp_webform_equipo_7
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             Response.Redirect($"~/Carrito.aspx?id={idSeleccionado}&cant={tbxCantidad.Text}");
+        }
+
+        protected void btnBusqueda_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Catalogo.aspx?busqueda={txtBusqueda.Text}");
         }
     }
 }

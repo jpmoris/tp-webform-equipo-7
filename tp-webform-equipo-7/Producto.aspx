@@ -7,6 +7,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <%
+     if (aux != null)
+     {
+     %>
 
     <div class="container mt-3">
      <nav aria-label="breadcrumb">
@@ -71,7 +75,34 @@
         </div>
       </div>
 
+     <%
+     } else
+            {
+        %>
+        <div class="container my-5 py-3">
+          <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <div class="text-center">
+              <img class="img-fluid" style="width: 350px;" src="https://www.breathearomatherapy.com/assets/images/global/no-product.png" alt="Producto inválido" />
+            </div>
+              <h1 class="text-body-emphasis mt-3">No se encontró el producto.</h1>
+            <p class="col-lg-8 mx-auto fs-5 text-muted">
+                El producto es inválido o no existe. Por favor, intenta una nueva búsqueda:
+            </p>
+            <!-- buscador-->
+            <div class="col-md-6 mx-auto">
+                <div class="row">
+                    <div class="input-group mb-3">
+                      <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" placeholder="Buscar producto"></asp:textBox>
+                      <asp:button runat="server" class="btn btn-primary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
+                    </div>
+                </div>
+            </div>
+          </div>
+       </div>
 
+        <%
+            }
+    %>
   </div>
 </div>
 
