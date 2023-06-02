@@ -52,7 +52,7 @@
               <asp:button runat="server" class="btn btn-outline-secondary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
                 </div>
         </div>
-
+         
           <!-- catalogo-->
         <h2>Productos</h2>
             <asp:UpdatePanel runat="server">

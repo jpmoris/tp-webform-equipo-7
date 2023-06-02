@@ -31,6 +31,7 @@ namespace tp_webform_equipo_7
                     lblProductoDescripcion.Text = aux.Descripcion;
                     hrefCategoria.Text = aux.Categoria.Nombre;
                     lblProductoPrecio.Text = "$" + aux.Precio.ToString();
+                    listarImagenes();
                 }
             }
             else
@@ -50,6 +51,30 @@ namespace tp_webform_equipo_7
         protected void btnBusqueda_Click(object sender, EventArgs e)
         {
             Response.Redirect($"~/Catalogo.aspx?busqueda={txtBusqueda.Text}");
+        }
+
+        public void listarImagenes()
+        {
+            ImagenNegocio negocioImg = new ImagenNegocio();
+            
+            List<Imagen> imagenes = negocioImg.listarPorIdArticulo(aux.Id);
+
+            foreach (Imagen imagen in imagenes)
+            {
+                List<string> imagenesUrl = new List<string>();
+                //si hay imagenes guardadas se agrega la primera, sino se agrega un placeholder
+
+                if (imagenes.Count == 0)
+                {
+                    imagenesUrl.Add(placeholderImg);
+                    return;
+                }
+                else
+                {
+                    imagenesUrl.Add(imagen.url);
+                }
+                aux.Imagenes = imagenesUrl;
+            }
         }
     }
 }

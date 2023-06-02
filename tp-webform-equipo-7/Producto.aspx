@@ -32,20 +32,20 @@
       <div class="col-md-5">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-              <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-              <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                <% int index = 0; %>
+                <% foreach (string img in aux.Imagenes) %>
+                <% { %>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index); %>" " class="active"></li>
+                <%      index++; %>
+                <% } %>
             </ol>
             <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#modalImagen1">
-                <img src="https://images.fravega.com/f300/44abb86f01c772ff7e9810450c9aa1a9.jpg.webp" alt="Imagen 1" class="d-block w-100">
-              </div>
-              <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#modalImagen2">
-                <img src="https://images.fravega.com/f1000/a943fd097b785f6e522e909127146e42.jpg.webp" alt="Imagen 2" class="d-block w-100">
-              </div>
-              <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#modalImagen3">
-                <img src="https://images.fravega.com/f120/291b79ca3afa4c3fdb09093a584c1224.jpg.webp" alt="Imagen 3" class="d-block w-100">
-              </div>
+            <% foreach (string img in aux.Imagenes) %>
+                <% { %>
+                      <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#modalImagen1">
+                        <img src="<% Response.Write(img); %>" alt="Imagen 1" class="d-block w-100">
+                      </div>
+                <% } %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
