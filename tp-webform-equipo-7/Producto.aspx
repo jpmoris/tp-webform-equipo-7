@@ -4,16 +4,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide@3.4.1/dist/css/glide.core.min.css">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 
     <div class="container mt-3">
      <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-          <li class="breadcrumb-item"><a href="#">Categoría</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Producto</li>
+          <li class="breadcrumb-item"><a href="Catalogo.aspx">Inicio</a></li>
+          <li class="breadcrumb-item">
+              <asp:HyperLink ID="hrefCategoria" text="hey" href="Catalogo.aspx" runat="server">
+              </asp:HyperLink>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+              <asp:Label ID="lblNombreProducto" runat="server" Text="Nombre Producto"></asp:Label>
+           </li>
         </ol>
       </nav>
     </div>
@@ -50,12 +55,15 @@
       </div>
 
       <div class="col-md-6 offset-md-1">
-          <span class="badge bg-danger m-2 p-lg-2">Oferta</span>
-        <h2>Título del Producto</h2>
-          <p>Descripción corta del producto.</p>
-            <p class="card-text fs-2 fw-bold">$100 
-             <small class="text-decoration-line-through">$120</small>
-             
+          <asp:Label ID="lblProductoMarca" runat="server" CssClass="badge bg-danger m-2 p-lg-2 fs-6" Text="Marca"></asp:Label>
+          <h1>
+            <asp:Label ID="lblProductoTitulo" runat="server" Text="Nombre Producto"></asp:Label>
+          </h1>
+          <p>
+             <asp:Label ID="lblProductoDescripcion" runat="server" Text="Nombre Producto"></asp:Label>
+          </p>
+            <p class="card-text fs-2 fw-bold">
+                <asp:Label ID="lblProductoPrecio" runat="server" Text="$100"></asp:Label>
             </p>
         <div class="input-group mb-3" style="max-width: 200px;">
             <asp:TextBox  type="number" class="form-control" ID="tbxCantidad" runat="server">0</asp:TextBox>
@@ -63,28 +71,7 @@
         </div>
       </div>
 
-    <ul class="nav nav-tabs" id="caracteristicas" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="descripcion-larga-tab" data-bs-toggle="tab" data-bs-target="#descripcion-larga" type="button" role="tab" aria-controls="descripcion-larga" aria-selected="true">Descripción</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="dimensiones-tab" data-bs-toggle="tab" data-bs-target="#dimensiones" type="button" role="tab" aria-controls="dimensiones" aria-selected="false">Dimensiones</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="opiniones-tab" data-bs-toggle="tab" data-bs-target="#opiniones" type="button" role="tab" aria-controls="opiniones" aria-selected="false">Valoraciones</button>
-      </li>
-    </ul>
-    <div class="tab-content mt-3" id="caracteristicasContent">
-      <div class="tab-pane fade show active" id="descripcion-larga" role="tabpanel" aria-labelledby="descripcion-larga-tab">
-        <p>Descripción larga del producto.</p>
-      </div>
-      <div class="tab-pane fade" id="dimensiones" role="tabpanel" aria-labelledby="dimensiones-tab">
-        <p>Dimensiones del producto.</p>
-      </div>
-      <div class="tab-pane fade" id="opiniones" role="tabpanel" aria-labelledby="opiniones-tab">
-        <p>Valoraciones de los clientes.</p>
-      </div>
-    </div>
+
   </div>
 </div>
 
