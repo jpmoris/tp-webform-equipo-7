@@ -49,7 +49,7 @@
         <div class="row">
             <div class="input-group mb-3">
               <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" placeholder="Buscar producto"></asp:textBox>
-              <asp:button runat="server" class="btn btn-outline-secondary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
+              <asp:button runat="server" class="btn btn-primary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
                 </div>
         </div>
          

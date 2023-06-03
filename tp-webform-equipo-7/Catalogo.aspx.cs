@@ -101,8 +101,6 @@ namespace tp_webform_equipo_7
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
-
             if (!IsPostBack)
             {
                 listarCatalogo();
@@ -174,8 +172,17 @@ namespace tp_webform_equipo_7
 
         public void btn_Restablecer(object sender, EventArgs e)
         {
-            listarCatalogo();
-            txtBusqueda.Text = "";
+             listarCatalogo();
+             txtBusqueda.Text = "";
+
+            ddlCategorias.DataSource = ((List<Categoria>)Session["listaCategorias"]).FindAll(c => ((List<Articulo>)Session["listaMostrada"]).Any(a => a.Categoria.Codigo == c.Codigo) || c.Codigo == 0);
+            ddlCategorias.SelectedItem.Value = "0";
+            Session["listaFiltradaPorCategoria"] = Session["listaMostrada"];
+            ddlCategorias.DataBind();
+
+            ddlMarcas.DataSource = ((List<Marca>)Session["listaMarcas"]).FindAll(m => ((List<Articulo>)Session["listaMostrada"]).Any(a => a.Marca.Codigo == m.Codigo) || m.Codigo == 0);
+            ddlMarcas.SelectedItem.Value = "0";
+            ddlMarcas.DataBind();
         }
     }
 }

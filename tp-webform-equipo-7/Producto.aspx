@@ -30,51 +30,55 @@
   <div class="container">
     <div class="row h-100">
       <div class="col-md-5">
-          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
+          <div id="carouselImgProducto" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
                 <% int index = 0; %>
                 <% foreach (string img in aux.Imagenes) %>
                 <% { %>
                         <%if (index == 0) %>
                         <%{%>
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index);%>"  class="active"></li>
+                        <button data-bs-target="#carouselImgProducto" data-bs-slide-to="<% Response.Write(index);%>"  class="active"></button>
                         <%}
                         else
                         { %>
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index);%>" "></li>
+                        <button data-bs-target="#carouselImgProducto" data-bs-slide-to="<% Response.Write(index);%>" "></button>
 
-                    <%} %>
+                      <%} %>
                 <%      index++; %>
                 <% } %>
-            </ol>
+            </div>
               <!-- carousel -->
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="height: 500px;">
                 <%index = 0; %>
             <% foreach (string img in aux.Imagenes) %>
-                <% { %>
+            <% { %>
                     <%
                       if (index == 0)
                       { %>
                       <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#modalImagen1">
                         <img src="<% Response.Write(img); %>" alt="Imagen <% Response.Write(index+1); %>" class="d-block w-100">
                       </div>
-                    <%} else
-                    { %>
+                    <%}
+                      else
+                      { %>
                       <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#modalImagen1">
                         <img src="<% Response.Write(img); %>" alt="Imagen <% Response.Write(index+1); %>" class="d-block w-100">
                       </div>
                   <%  } %>
                 <%  index++;
-                    } %>
+               } %>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+            <%if(aux.Imagenes.Count > 1) %>
+            <% { %>
+            <button class="carousel-control-prev" href="#carouselImgProducto" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+            </button>
+            <a class="carousel-control-next" href="#carouselImgProducto" role="button" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Siguiente</span>
             </a>
+              <% } %>
           </div>
       </div>
 
