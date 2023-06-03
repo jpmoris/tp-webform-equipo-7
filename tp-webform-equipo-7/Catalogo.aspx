@@ -62,15 +62,15 @@
                          <ItemTemplate>
                             <div class="col-md-4">
                                 <!-- producto -->
-                                <div class="card">
+                                <div class="card my-3">
                                   <div class="card-body">
                                     <a href="Producto.aspx?id=<%#Eval("Id")%>" style="text-decoration:none; color:inherit">
                                         <img src="<%#Eval("Imagenes[0]") %>" class="card-img-top" alt="Imagen destacada">
-                                        <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                                        <p class="card-text fs-5 fw-bold"><%#Eval("Precio")%> 
+                                        <h5 class="card-title py-2"><%#Eval("Nombre") %></h5>
+                                        <p class="card-text fs-5 fw-bold">$ <%#Eval("Precio")%> 
                                 <!--    <span class="badge bg-danger m-2 p-lg-2">Oferta</span>      -->
                                         </p>
-                                        <a class="btn btn-primary" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
+                                        <a class="btn btn-primary mt-2" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
                                     </a>
                                   &nbsp;&nbsp;</div>
                                 </div>

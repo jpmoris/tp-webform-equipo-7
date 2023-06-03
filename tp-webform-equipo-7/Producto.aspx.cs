@@ -59,22 +59,25 @@ namespace tp_webform_equipo_7
             
             List<Imagen> imagenes = negocioImg.listarPorIdArticulo(aux.Id);
 
-            foreach (Imagen imagen in imagenes)
+            List<string> imagenesUrl = new List<string>();
+            if (imagenes.Count == 0)
             {
-                List<string> imagenesUrl = new List<string>();
-                //si hay imagenes guardadas se agrega la primera, sino se agrega un placeholder
-
-                if (imagenes.Count == 0)
-                {
-                    imagenesUrl.Add(placeholderImg);
-                    return;
-                }
-                else
-                {
-                    imagenesUrl.Add(imagen.url);
-                }
-                aux.Imagenes = imagenesUrl;
+                imagenesUrl.Add(placeholderImg);
             }
+            else
+            {
+                foreach (Imagen imagen in imagenes) {
+                    if(negocioImg.comprobarUrl(imagen.url))
+                    {
+                        imagenesUrl.Add(imagen.url);
+                    } 
+                    else
+                    {
+                        imagenesUrl.Add(placeholderImg);
+                    }
+                }
+            }
+            aux.Imagenes = imagenesUrl;
         }
     }
 }

@@ -66,9 +66,9 @@ namespace tp_webform_equipo_7
                 List<string> imagenesUrl = new List<string>();
                 //si hay imagenes guardadas se agrega la primera, sino se agrega un placeholder
 
-                if (imagenes.Count == 0) imagenesUrl.Add(placeholderImg);
+                if (imagenes.Count == 0 || !( negocioImg.comprobarUrl(imagenes[0].url)) ) imagenesUrl.Add(placeholderImg);
                 else imagenesUrl.Add(imagenes[0].url);
-
+                
                 articulo.Imagenes = imagenesUrl;
 
                 if (!listaCategorias.Any(c => c.Codigo == articulo.Categoria.Codigo && c.Nombre == articulo.Categoria.Nombre))

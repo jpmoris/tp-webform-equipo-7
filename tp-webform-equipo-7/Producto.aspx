@@ -35,17 +35,37 @@
                 <% int index = 0; %>
                 <% foreach (string img in aux.Imagenes) %>
                 <% { %>
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index); %>" " class="active"></li>
+                        <%if (index == 0) %>
+                        <%{%>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index);%>"  class="active"></li>
+                        <%}
+                        else
+                        { %>
+                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<% Response.Write(index);%>" "></li>
+
+                    <%} %>
                 <%      index++; %>
                 <% } %>
             </ol>
+              <!-- carousel -->
             <div class="carousel-inner">
+                <%index = 0; %>
             <% foreach (string img in aux.Imagenes) %>
                 <% { %>
+                    <%
+                      if (index == 0)
+                      { %>
                       <div class="carousel-item active" data-bs-toggle="modal" data-bs-target="#modalImagen1">
-                        <img src="<% Response.Write(img); %>" alt="Imagen 1" class="d-block w-100">
+                        <img src="<% Response.Write(img); %>" alt="Imagen <% Response.Write(index+1); %>" class="d-block w-100">
                       </div>
-                <% } %>
+                    <%} else
+                    { %>
+                      <div class="carousel-item" data-bs-toggle="modal" data-bs-target="#modalImagen1">
+                        <img src="<% Response.Write(img); %>" alt="Imagen <% Response.Write(index+1); %>" class="d-block w-100">
+                      </div>
+                  <%  } %>
+                <%  index++;
+                    } %>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
