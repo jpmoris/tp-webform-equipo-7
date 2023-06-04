@@ -31,16 +31,13 @@ namespace tp_webform_equipo_7
 
                     if (imagenes.Count == 0) imagenesUrl.Add(placeholderImg);
                     else imagenesUrl.Add(imagenes[0].url);
-                    
-                    articulo.Imagenes = imagenesUrl;   
-                    
+
+                    articulo.Imagenes = imagenesUrl;
+
                 }
                 Session.Add("listaArticulos", listaArticulos);
                 cardRepeater.DataSource = Session["listaArticulos"];
                 cardRepeater.DataBind();
-                
-
-                
             }
         }
     }
