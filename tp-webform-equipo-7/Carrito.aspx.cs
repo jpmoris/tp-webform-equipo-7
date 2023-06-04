@@ -17,7 +17,7 @@ namespace tp_webform_equipo_7
         public List<Modelo.Carrito> carrito { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["carrito"] == null && Request.QueryString["id"] == null) Response.Redirect("~/");
+            //if (Session["carrito"] == null && Request.QueryString["id"] == null) Response.Redirect("~/");
             if (!Page.IsPostBack)
             {
                 loadCarrito();
@@ -26,8 +26,8 @@ namespace tp_webform_equipo_7
 
         protected void loadCarrito()
         {
-            try
-            {
+            //try
+            //{
                 List<Articulo> articulos = new List<Articulo>();
                 Articulo articulo = new Articulo();
                 carrito = (List<Modelo.Carrito>)Session["carrito"];
@@ -75,12 +75,12 @@ namespace tp_webform_equipo_7
                     }
                     lblTotal.Text = total.ToString();
                 }
-                else
-                {
-                    Response.Redirect("~/");
-                }
-            }
-            catch (Exception ex) { throw new Exception(ex.Message); }
+                //else
+                //{
+                //    Response.Redirect("~/");
+                //}
+            //}
+            //catch (Exception ex) { throw new Exception(ex.Message); }
         }
 
         protected void repeaterCarrito_ItemCommand(object source, RepeaterCommandEventArgs e)

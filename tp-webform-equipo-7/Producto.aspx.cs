@@ -45,6 +45,7 @@ namespace tp_webform_equipo_7
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
+            idSeleccionado = Convert.ToInt32(Request.QueryString["id"]);
             Response.Redirect($"~/Carrito.aspx?id={idSeleccionado}&cant={tbxCantidad.Text}");
         }
 

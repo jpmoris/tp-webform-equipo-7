@@ -7,6 +7,8 @@
         <div class="row">
             <div class="col-md-8">
                 <h2 class="mt-3 mb-3">Tu carrito de compras</h2>
+
+
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -19,6 +21,8 @@
                             </tr>
                         </thead>
                         <tbody>
+                <%if (carrito != null && carrito.Count() > 0)
+                    {%>
                             <asp:Repeater runat="server" ID="repeaterCarrito" OnItemCommand="repeaterCarrito_ItemCommand">
                                 <ItemTemplate>
                                     <tr>
@@ -26,22 +30,26 @@
                                             <img src="<%# Convert.ToString(Eval("articulo.Imagenes[0]")) %>" alt="Imagen del producto" width="100" class="img-thumbnail" onerror="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png">
                                             <%#Eval("articulo.Nombre") %>
                                         </td>
-                                        <td style="vertical-align:middle"><%#Eval("articulo.Precio")%></td>
+                                        <td style="vertical-align: middle"><%#Eval("articulo.Precio")%></td>
 
-                                        <td style="vertical-align:middle">
+                                        <td style="vertical-align: middle">
                                             <%#Eval("cantidad")%>
                                         </td>
 
-                                        <td style="vertical-align:middle"><%# Convert.ToDecimal(Eval("articulo.Precio")) * Convert.ToInt32(Eval("cantidad"))%></td>
-                                        <td style="vertical-align:middle">
-                                            <asp:Button runat="server" type="button" class="btn btn-danger" Text="X" CommandName="Eliminar" CommandArgument='<%#Eval("articulo.Id")%>'/></td>
+                                        <td style="vertical-align: middle"><%# Convert.ToDecimal(Eval("articulo.Precio")) * Convert.ToInt32(Eval("cantidad"))%></td>
+                                        <td style="vertical-align: middle">
+                                            <asp:Button runat="server" type="button" class="btn btn-danger" Text="X" CommandName="Eliminar" CommandArgument='<%#Eval("articulo.Id")%>' /></td>
                                     </tr>
                                 </ItemTemplate>
                             </asp:Repeater>
+            <%} else {%>
+                <td colspan="5">Todavia no hay items en tu carrito. <a href="Catalogo.aspx">Encontra los mejores productos!</a></td>
+            <%}%>
                         </tbody>
                     </table>
                 </div>
             </div>
+
             <div class="col-md-4">
                 <h4 class="mt-5 mb-2">Envío</h4>
                 <div class="mb-3">
@@ -66,7 +74,8 @@
                     <asp:Label runat="server" ID="lblTotal">0</asp:Label>
                 </h5>
                 <button class="btn btn-primary btn-block" type="button">Finalizar compra</button>
-                <a href="Catalogo.aspx"><button class="btn btn-link btn-block" type="button">Seguir comprando</button></a>
+                <a href="Catalogo.aspx">
+                    <button class="btn btn-link btn-block" type="button">Seguir comprando</button></a>
             </div>
         </div>
     </div>
