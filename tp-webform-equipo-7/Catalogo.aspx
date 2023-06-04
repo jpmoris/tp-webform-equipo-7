@@ -4,45 +4,57 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-3">
     <div class="row">
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         
         <!-- sidebar -->
       <div class="col-md-3">
 
-        <h4>Filtros</h4>
+          <div class="d-flex justify-content-between">
+
+          <h4>Filtros</h4>
+          <asp:Button ID="Button1" OnClick="btn_Restablecer" cssclass="btn btn-outline-primary" text="Restablecer" runat="server" />
+          </div>
+        <!-- orden 
         <div class="mb-3">
-          <label for="rangoPrecios" class="form-label">Rango de precios</label>
-          <input type="range" class="form-range" id="rangoPrecios" min="0" max="100" step="10" >
+          <label for="order" class="form-label">Ordenar por</label>
+          <asp:DropDownList runat="server" class="form-select" id="order" AutoPostBack="true">   
+          </asp:DropDownList>
         </div>
+            -->
         <!-- filtro categorias -->
         <div class="mb-3">
           <label for="categoria" class="form-label">Categoría</label>
-          <asp:DropDownList runat="server" class="form-select" id="categoria" >
-            <asp:ListItem Selected="True">Todas las categorías</asp:ListItem>
-            <asp:ListItem value="1">Categoría 1</asp:ListItem>
-            <asp:ListItem value="2">Categoría 2</asp:ListItem>
-            <asp:ListItem value="3">Categoría 3</asp:ListItem>
+          <asp:DropDownList runat="server" class="form-select" id="ddlCategorias" AutoPostBack="true" OnSelectedIndexChanged="ddlCategorias_SelectedIndexChanged">   
+              
           </asp:DropDownList>
         </div>
 
         <!-- filtro marcas -->
         <div class="mb-3">
           <label for="marcas" class="form-label">Marca</label>
-
-          <asp:DropDownList runat="server" class="form-select" id="marcas">
-            <asp:ListItem Selected="True">Todas las marcas</asp:ListItem>
-            <asp:ListItem value="1">Marca 1</asp:ListItem>
-            <asp:ListItem value="2">Marca 2</asp:ListItem>
-            <asp:ListItem value="3">Marca 3</asp:ListItem>
-          </asp:DropDownList>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                  <asp:DropDownList runat="server" class="form-select" id="ddlMarcas" AutoPostBack="true" OnSelectedIndexChanged="ddlMarcas_SelectedIndexChanged">
+              
+                  </asp:DropDownList>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
 
       </div>
         <!-- fin sidebar -->
 
+        <!-- buscador-->
       <div class="col-md-9">
-
+        <div class="row">
+            <div class="input-group mb-3">
+              <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" placeholder="Buscar producto"></asp:textBox>
+              <asp:button runat="server" class="btn btn-primary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
+                </div>
+        </div>
+         
+          <!-- catalogo-->
         <h2>Productos</h2>
-            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                 <div class="row">
@@ -50,17 +62,17 @@
                          <ItemTemplate>
                             <div class="col-md-4">
                                 <!-- producto -->
-                                <div class="card">
+                                <div class="card my-3">
                                   <div class="card-body">
                                     <a href="Producto.aspx?id=<%#Eval("Id")%>" style="text-decoration:none; color:inherit">
                                         <img src="<%#Eval("Imagenes[0]") %>" class="card-img-top" alt="Imagen destacada">
-                                        <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                                        <p class="card-text fs-5 fw-bold"><%#Eval("Precio")%> 
+                                        <h5 class="card-title py-2"><%#Eval("Nombre") %></h5>
+                                        <p class="card-text fs-5 fw-bold">$ <%#Eval("Precio")%> 
                                 <!--    <span class="badge bg-danger m-2 p-lg-2">Oferta</span>      -->
                                         </p>
-                                        <a class="btn btn-primary" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
+                                        <a class="btn btn-primary mt-2" href="Producto.aspx?id=<%#Eval("id")%>">Ver producto</a>
                                     </a>
-                                  </div>
+                                  &nbsp;&nbsp;</div>
                                 </div>
                                 <!-- fin producto-->
                             </div>

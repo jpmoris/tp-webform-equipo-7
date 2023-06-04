@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -88,6 +89,37 @@ namespace Controlador
             {
                 datos.CerrarConexion();
             }
+        }
+
+        public bool comprobarUrl(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+            try
+            {
+                using (HttpWebResponse resp = (HttpWebResponse)request.GetResponse())
+                {
+                    if (resp.StatusCode == HttpStatusCode.OK)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response is HttpWebResponse error)
+                {
+                    if (error.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        return false;
+                    }
+                    if (error.StatusCode == HttpStatusCode.Forbidden && url.Contains(".php?")) // COMPRUEBA IMAGENES GENERADAS POR PHP
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

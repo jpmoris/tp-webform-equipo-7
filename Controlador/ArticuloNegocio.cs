@@ -13,6 +13,45 @@ namespace Controlador
 {
     public class ArticuloNegocio
     {
+        
+        public Articulo buscarArticulo(int id)
+        {
+            Articulo aux = new Articulo();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetConsulta("SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.precio,m.Id IdMarca, m.Descripcion Marca, c.Id IdCategoria, c.Descripcion Categoria " +
+                   "from ARTICULOS A " +
+                   "Join Marcas as m on A.IdMarca = M.Id " +
+                   "Join CATEGORIAS as c on A.IdCategoria = C.Id " +
+                   "WHERE a.Id=" + id);
+                datos.EjecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    aux.Marca = new Marca();
+                    aux.Marca.Codigo = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Nombre = (string)datos.Lector["Marca"];
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Codigo = (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Nombre = (string)datos.Lector["Categoria"];
+                    aux.Precio = decimal.Round((decimal)datos.Lector["Precio"], 2);
+                }
+                else aux = null;
+                return aux;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
         public int GetUltimoIDArticulo()
         {
             int n=0;
