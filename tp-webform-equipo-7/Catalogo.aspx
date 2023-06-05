@@ -48,10 +48,12 @@
       <div class="col-md-9">
         <div class="row">
             <label for="txtBusqueda" class="form-label">Búsqueda</label>
-            <div class="input-group mb-3">
-              <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" AutoPostBack="true" placeholder="Buscar producto"></asp:textBox>
-              <asp:button runat="server" class="btn btn-primary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
-                </div>
+                <asp:Panel runat="server" DefaultButton="btnBusqueda">
+                    <div class="input-group mb-3">
+                      <asp:textBox runat="server" type="text" class="form-control" id="txtBusqueda" placeholder="Buscar producto"></asp:textBox>
+                      <asp:button runat="server" class="btn btn-primary" type="button" id="btnBusqueda" OnClick="btnBusqueda_Click" Text="Buscar"></asp:button>
+                    </div>
+                </asp:Panel>
         </div>
          
           <!-- catalogo-->
