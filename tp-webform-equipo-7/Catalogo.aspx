@@ -85,13 +85,16 @@
 
         <nav aria-label="Navegación de página">
           <ul class="pagination mt-3 mb-3">
-            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+            <asp:Repeater ID="pagerRepeater" runat="server">
+              <ItemTemplate>
+                <li class='<%# Container.DataItem.Equals(Session["paginaActual"]) ? "page-item active" : "page-item" %>'>
+                  <a class="page-link" href='<%# $"?page={Container.DataItem}" %>'><%# Container.DataItem %></a>
+                </li>
+              </ItemTemplate>
+            </asp:Repeater>
           </ul>
         </nav>
+
       </div>
     </div>
   </div>

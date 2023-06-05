@@ -14,7 +14,39 @@ namespace tp_webform_equipo_7
     {
         private string placeholderImg = "https://www.charitycomms.org.uk/wp-content/uploads/2019/02/placeholder-image-square.jpg";
 
-        private string ordenarPor = "0";
+        public void setPaginaActual()
+        {
+            int paginaActual = 1;
+            if (Request.QueryString["page"] != null)
+            {
+                paginaActual = int.Parse(Request.QueryString["page"]);
+            }
+            Session["paginaActual"] = paginaActual;
+        }
+        public void cargarListadoPorPagina(List<Articulo> listaArticulos)
+        {
+            setPaginaActual();
+            int paginaActual = (int)Session["paginaActual"];
+            int startIndex = (paginaActual - 1) * 30;
+            int totalArticulos = listaArticulos.Count;
+            
+
+            List<Articulo> listaPaginada = listaArticulos.GetRange(startIndex, Math.Min(30, totalArticulos - startIndex));
+
+            Session["listaMostrada"] = listaPaginada;
+            cardRepeater.DataSource = listaPaginada;
+            cardRepeater.DataBind();
+
+            int totalPaginas = (int)Math.Ceiling((double)totalArticulos / 30);
+            List<int> paginas = new List<int>();
+            for (int i = 1; i <= totalPaginas; i++)
+            {
+                paginas.Add(i);
+            }
+
+            pagerRepeater.DataSource = paginas;
+            pagerRepeater.DataBind();
+        }
 
         public void filtrarCatalogo()
         {
@@ -33,11 +65,11 @@ namespace tp_webform_equipo_7
                     a.Categoria.Nombre.ToLower().Contains(txtBusqueda.Text.ToLower())
                     );
                 Session["listaMostrada"] = listaFiltrada;
-                cardRepeater.DataSource = listaFiltrada;
-                cardRepeater.DataBind();
 
             }
 
+            cargarListadoPorPagina((List<Articulo>)Session["listaMostrada"]);
+            
             ddlCategorias.DataSource = ((List<Categoria>)Session["listaCategorias"]).FindAll(c => ((List<Articulo>)Session["listaMostrada"]).Any(a => a.Categoria.Codigo == c.Codigo) || c.Codigo == 0);
             ddlCategorias.SelectedItem.Value = "0";
             Session["listaFiltradaPorCategoria"] = Session["listaMostrada"];
@@ -96,13 +128,14 @@ namespace tp_webform_equipo_7
 
             Session.Add("listaArticulos", listaArticulos);
             Session.Add("listaMostrada", listaArticulos);
-            cardRepeater.DataSource = Session["listaMostrada"];
-            cardRepeater.DataBind();
+            cargarListadoPorPagina(listaArticulos);
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                Session.Add("paginaActual", 1);
                 listarCatalogo();
 
                 if (Request.QueryString["busqueda"] != null)
@@ -125,23 +158,19 @@ namespace tp_webform_equipo_7
 
         protected void ddlCategorias_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Session["paginaActual"] = 1;
 
             int codigo = int.Parse(ddlCategorias.SelectedItem.Value);
             List<Articulo> listaFiltrada = (List<Articulo>)Session["ListaMostrada"];
             Session.Add("listaFiltradaPorCategoria", listaFiltrada);
-            if (codigo == 0)
-            {
-                cardRepeater.DataSource = Session["listaMostrada"];
-                cardRepeater.DataBind();
-            }
-            else
+            if (codigo != 0)
             {
                 listaFiltrada = ((List<Articulo>)Session["listaMostrada"]).FindAll(a => a.Categoria.Codigo == codigo);
                 Session["listaFiltradaPorCategoria"] = listaFiltrada;
-                cardRepeater.DataSource = listaFiltrada;
-                cardRepeater.DataBind();
-
             }
+
+            cargarListadoPorPagina(listaFiltrada);
+
                 //actualiza filtro de marcas
                 ddlMarcas.DataSource = ((List<Marca>)Session["listaMarcas"]).FindAll(m => listaFiltrada.Any(a => a.Marca.Codigo == m.Codigo)||m.Codigo==0);
                 ddlMarcas.DataBind();
@@ -151,16 +180,16 @@ namespace tp_webform_equipo_7
         {
             int codigo = int.Parse(ddlMarcas.SelectedItem.Value);
             
+            Session["paginaActual"] = 1;
             if(codigo == 0)
             {
 
-                cardRepeater.DataSource = Session["listaFiltradaPorCategoria"];
-                cardRepeater.DataBind();
+                cargarListadoPorPagina((List<Articulo>)Session["listaFiltradaPorCategoria"]);
             }
             else
             {
-                cardRepeater.DataSource = ((List<Articulo>)Session["listaFiltradaPorCategoria"]).FindAll(a => a.Marca.Codigo == codigo);
-                cardRepeater.DataBind();
+                List<Articulo> listaFiltrada = ((List<Articulo>)Session["listaFiltradaPorCategoria"]).FindAll(a => a.Marca.Codigo == codigo);
+                cargarListadoPorPagina(listaFiltrada);
             }
 
         }
@@ -172,6 +201,8 @@ namespace tp_webform_equipo_7
 
         public void btn_Restablecer(object sender, EventArgs e)
         {
+            Session["paginaActual"] = 1;
+
              listarCatalogo();
              txtBusqueda.Text = "";
 
@@ -184,5 +215,16 @@ namespace tp_webform_equipo_7
             ddlMarcas.SelectedItem.Value = "0";
             ddlMarcas.DataBind();
         }
+
+        protected void pagerRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "Page")
+            {
+                int pagina = Convert.ToInt32(e.CommandArgument);
+                Session["paginaActual"] = pagina;
+                cargarListadoPorPagina((List<Articulo>)Session["listaMostrada"]);
+            }
+        }
+
     }
 }
